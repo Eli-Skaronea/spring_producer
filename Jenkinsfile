@@ -64,10 +64,10 @@ podTemplate(label: 'mypod', containers:
             container('helm')
             {
                 echo 'Initialize helm'
-                sh "helm init"
+                sh "helm init --client-only"
 
                 echo 'Linting helm package...'
-                sh "helm lint spring-app/"
+                sh "helm lint helm-charts/spring-app/"
 
                 echo 'Releasing helm chart'
                 sh "helm upgrade --install producer -f helm-charts/spring-app/pvalues.yaml helm-charts/docs/spring-app-0.1.0.tgz"
