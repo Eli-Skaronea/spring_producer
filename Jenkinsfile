@@ -67,17 +67,20 @@ podTemplate(label: 'mypod', containers:
                 sh "helm init"
 
                 echo 'Linting helm package...'
-                sh "helm lint spring-producer/"
+                sh "helm lint spring-app/"
 
-                echo 'Packaging helm chart...'
-                sh """
-                    helm package spring-producer/ --version 1.0-${env.BUILD_NUMBER} -d helm-charts/docs/
-                    helm package spring-producer/ --version 1.0-latest -d helm-charts/docs/
-                    helm repo index helm-charts/docs --url https://eli-skaronea.github.io/helm-charts/
-                   """ 
-                archiveArtifacts 'helm-charts/docs/index.yaml'
-                archiveArtifacts "helm-charts/docs/spring-producer-1.0-${env.BUILD_NUMBER}.tgz"
-                archiveArtifacts 'helm-charts/docs/spring-producer-1.0-latest.tgz'
+                echo 'Releasing helm chart'
+                sh "helm upgrade --install producer -f helm-charts/spring-app/pvalues.yaml helm-charts/docs/spring-app-0.1.0.tgz"
+
+                //echo 'Packaging helm chart...'
+                //sh """
+                //    helm package spring-producer/ --version 1.0-${env.BUILD_NUMBER} -d helm-charts/docs/
+                //    helm package spring-producer/ --version 1.0-latest -d helm-charts/docs/
+                //    helm repo index helm-charts/docs --url https://eli-skaronea.github.io/helm-charts/
+                //   """ 
+                //archiveArtifacts 'helm-charts/docs/index.yaml'
+                //archiveArtifacts "helm-charts/docs/spring-producer-1.0-${env.BUILD_NUMBER}.tgz"
+                //archiveArtifacts 'helm-charts/docs/spring-producer-1.0-latest.tgz'
 
 
             }
