@@ -71,7 +71,7 @@ podTemplate(label: 'mypod', containers:
                 sh "helm lint helm-charts/spring-app/"
 
                 echo 'Releasing helm chart'
-                sh "helm upgrade --install producer -f helm-charts/spring-app/pvalues.yaml helm-charts/docs/spring-app-0.1.latest.tgz"
+                sh "helm upgrade --install producer -f helm-charts/spring-app/pvalues.yaml helm-charts/spring-app"
 
                 
 
