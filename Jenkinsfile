@@ -44,7 +44,7 @@ podTemplate(label: 'mypod', containers:
             container('docker')
             {
                 sh "docker build -t eskaronea/spring_producer:v1.0.${env.BUILD_NUMBER} ."
-                sh "docker build -t eskaronea/spring_producer:latest"
+                sh "docker build -t eskaronea/spring_producer:latest ."
         
                 echo 'Pushing docker image to docker hub...'
                
