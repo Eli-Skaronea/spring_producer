@@ -8,5 +8,4 @@ spec:
     targetPort: 9080
   selector:
     app: spring-producer-app
-  type: LoadBalancer
-
+  type: ClusterIP
