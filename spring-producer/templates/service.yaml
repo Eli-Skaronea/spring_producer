@@ -9,6 +9,4 @@ spec:
   selector:
     app: spring-producer-app
   type: LoadBalancer
-status:
-  loadBalancer: {}
----
+
