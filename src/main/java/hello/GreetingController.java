@@ -21,7 +21,7 @@ public class GreetingController {
         this.greetingsService = greetingsService;
     }
 
-    private static final String template = "Hello, %s!";
+    private static final String template = "Goodbye, %s!";
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/greeting")
