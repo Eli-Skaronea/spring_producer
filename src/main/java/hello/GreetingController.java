@@ -24,7 +24,7 @@ public class GreetingController {
     private static final String template = "Goodbye, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/greeting")
+    @RequestMapping("/goodbye")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
         Greeting greetings = new Greeting(counter.incrementAndGet(),
